@@ -1,0 +1,57 @@
+body {
+ background-image: url("firewatch.jpg");
+}
+
+.inicio {
+ margin: 10px;
+    padding: 20px;
+    text-align: center;
+    background-color: #010028;
+    color: white;
+    transition: all .2s ease;
+}
+
+.inicio:hover {
+ background-color: #8200f6;
+}
+
+h1 {
+ display: flex;
+ color: white;
+ justify-content: center;
+ align-items: center;
+ flex: 1;
+}
+
+h2 {
+ display: flex;
+ color: white;
+ justify-content: center;
+ align-items: center;
+ flex: 1;
+}
+
+div {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ flex: 1;
+}
+
+ul {
+ text-align: center;
+ list-style-position: inside;
+}
+
+.container1, .container2, .container3, .container4 {
+    margin: 10px;
+    padding: 20px;
+    text-align: center;
+    background-color: #010028;
+    color: white;
+    transition: all .2s ease;
+}
+
+.container1:hover, .container2:hover, .container3:hover, .container4:hover {
+  background-color: #8200f6
+}

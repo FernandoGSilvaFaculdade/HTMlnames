@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="Visual2.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+  <h1>Resultado</h1>
+  <main class = "inicio">
+    <h2>Lista de Nomes e Idades por Ordem Alfabética:</h2>
+    <ul id="lista"></ul>
+    </main>
+    <main class = "container1">
+      <h2>Menor Nome:</h2>
+      <div id="menorNome"></div>
+    </main>
+    <main class = "container2">
+      <h2>Maior Nome:</h2>
+      <div id="maiorNome"></div>
+    </main>
+    <main class = "container3">
+      <h2>Menor Idade:</h2>
+      <div id="menorIdade"></div>
+    </main>
+    <main class = "container4">
+      <h2>Idade Mediana:</h2>
+      <div id="idadeMediana"></div>
+    </main>
+
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+
+        const pessoas = [];
+        for (let i = 1; i <= 5; i++) {
+            const nome = urlParams.get(`nome${i}`);
+            const idade = parseInt(urlParams.get(`idade${i}`));
+            pessoas.push({ nome, idade });
+        }
+
+        pessoas.sort((a, b) => a.nome.localeCompare(b.nome));
+
+        const lista = document.getElementById("lista");
+        for (const pessoa of pessoas) {
+            const listItem = document.createElement("li");
+            listItem.textContent = `${pessoa.nome} - ${pessoa.idade} anos`;
+            lista.appendChild(listItem);
+        }
+
+        const menorNome = pessoas[0].nome;
+        const maiorNome = pessoas[pessoas.length - 1].nome;
+        document.getElementById("menorNome").textContent = menorNome;
+        document.getElementById("maiorNome").textContent = maiorNome;
+
+        const menorIdade = Math.min(...pessoas.map(p => p.idade));
+        document.getElementById("menorIdade").textContent = menorIdade;
+
+        const idades = pessoas.map(p => p.idade);
+        idades.sort((a, b) => a - b);
+        const mediana = idades.length % 2 === 0
+            ? (idades[idades.length / 2 - 1] + idades[idades.length / 2]) / 2
+            : idades[Math.floor(idades.length / 2)];
+        document.getElementById("idadeMediana").textContent = mediana;
+    </script>
+
+</body>
+</html>
